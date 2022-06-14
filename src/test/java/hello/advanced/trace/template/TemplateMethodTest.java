@@ -58,8 +58,8 @@ public class TemplateMethodTest {
         };
 
         /*
-        클래스이름=class hello.advanced.trace.template.TemplateMethodTest$1
-        TemplateMethodTest 클래스 내부에 이름없는 클래스이므로 임의로 자바가 TemplateMethodTest$1로 만듬
+        클래스이름=class hello.advanced.trace.template.ContextV1Test$1
+        ContextV1Test 클래스 내부에 이름없는 클래스이므로 임의로 자바가 ContextV1Test$1로 만듬
          */
         log.info("클래스이름={}", abstractTemplate.getClass()); 
         abstractTemplate.excute();
