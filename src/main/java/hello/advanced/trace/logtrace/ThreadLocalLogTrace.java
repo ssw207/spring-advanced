@@ -10,7 +10,11 @@ public class ThreadLocalLogTrace implements LogTrace {
     private static final String START_PREFIX = "-->";private static final String COMPLETE_PREFIX = "<--";
     private static final String EX_PREFIX = "<X-";
 
-    //private TraceId traceIdHolder; //traceId 동기화, 동시성 이슈 발생
+    /**
+     * 쓰레드 로컬에서 사용종료이후 remove 처리하지 않으면 심각한 성능상 이슈가 발생함
+     * was 요청 -> 쓰레드풀 에서 쓰레드를 꺼냄 -> 쓰레드 로컬 생성 -> 사용종료된 쓰레드반환 (생성된 쓰레드 로컬이 살아 있음)
+     * was 조회요청 -> 쓰레드풀에서 쓰레드를 꺼냄 -> 내부로직에서 쓰레드로컬 정보 조회 -> 남이있던 데이터가 조회됨
+     */
     private ThreadLocal<TraceId> traceIdHolder = new ThreadLocal<>();
 
     @Override
