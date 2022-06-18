@@ -1,7 +1,10 @@
-package hello.prox.app.v1;
+package hello.proxy.app.v3;
 
-public class OrderRepositoryV1Impl implements OrderRepositoryV1 {
-    @Override
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class OrderRepositoryV3 {
+
     public void save(String itemId) {
         if ("ex".equals(itemId)) {
             throw new IllegalArgumentException("예외 발생!");

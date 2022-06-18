@@ -1,4 +1,4 @@
-package hello.prox.app.v1;
+package hello.proxy.app.v1;
 
 import lombok.RequiredArgsConstructor;
 

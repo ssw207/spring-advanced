@@ -1,9 +1,7 @@
-package hello.prox.app.v1;
+package hello.proxy.app.v1;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
-@Service
 @RequiredArgsConstructor
 public class OrderServiceV1Impl implements OrderServiceV1 {
 
