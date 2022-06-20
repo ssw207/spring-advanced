@@ -20,6 +20,7 @@ public class OrderRepositoryInterfaceProxy implements OrderRepositoryV1 {
             logTrace.end(status);
         } catch (Exception exception) {
             logTrace.exception(status, exception);
+            throw exception;
         }
     }
 }
