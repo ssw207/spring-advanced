@@ -1,9 +1,9 @@
-package hello.trace.decorate;
+package hello.decorate;
 
-import hello.trace.decorate.code.DecoratorPatternClient;
-import hello.trace.decorate.code.MessageDecorator;
-import hello.trace.decorate.code.RealComponent;
-import hello.trace.decorate.code.TimeDecorator;
+import hello.decorate.code.DecoratorPatternClient;
+import hello.decorate.code.MessageDecorator;
+import hello.decorate.code.RealComponent;
+import hello.decorate.code.TimeDecorator;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 

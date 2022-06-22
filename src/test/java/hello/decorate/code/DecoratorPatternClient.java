@@ -1,4 +1,4 @@
-package hello.trace.decorate.code;
+package hello.decorate.code;
 
 import lombok.extern.slf4j.Slf4j;
 

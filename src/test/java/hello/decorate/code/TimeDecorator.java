@@ -1,14 +1,14 @@
-package hello.trace.proxy.pureproxy.concreteproxy.code;
+package hello.decorate.code;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class TimeProxy extends ConcreteLogic {
+public class TimeDecorator implements Component {
 
-    private ConcreteLogic target;
+    private Component target;
 
-    public TimeProxy(ConcreteLogic concreteLogic) {
-        this.target = concreteLogic;
+    public TimeDecorator(Component target) {
+        this.target = target;
     }
 
     @Override
