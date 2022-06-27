@@ -1,6 +1,6 @@
 package hello;
 
-import hello.proxy.config.v1_proxy.ConcreteProxyConfig;
+import hello.proxy.config.v2_dynamicproxy.DynamicProxyFilterConfig;
 import hello.trace.trace.logtrace.LogTrace;
 import hello.trace.trace.logtrace.ThreadLocalLogTrace;
 import org.springframework.boot.SpringApplication;
@@ -11,7 +11,9 @@ import org.springframework.context.annotation.Import;
 //@Import(AppV1Config.class) // @Configuration 명시적으로 설정파일을 등록할때 사용
 //@Import({AppV1Config.class, AppV2Config.class})
 //@Import(InterfaceProxyConfig.class)
-@Import(ConcreteProxyConfig.class)
+//@Import(ConcreteProxyConfig.class)
+//@Import(DynamicProxyBasicConfig.class)
+@Import(DynamicProxyFilterConfig.class)
 @SpringBootApplication(scanBasePackages = "hello.proxy.app") // SpringBootApplication 컴포넌트 스캔의 기본위치는 현재 클래스 기준으로 스캔한다.
 public class AdvancedApplication {
 

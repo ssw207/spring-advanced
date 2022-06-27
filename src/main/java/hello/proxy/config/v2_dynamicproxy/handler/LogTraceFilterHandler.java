@@ -1,20 +1,31 @@
-package hello.proxy.config.v2_dynamicproxy;
+package hello.proxy.config.v2_dynamicproxy.handler;
 
 import hello.trace.trace.TraceStatus;
 import hello.trace.trace.logtrace.LogTrace;
 import lombok.RequiredArgsConstructor;
+import org.springframework.util.PatternMatchUtils;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 @RequiredArgsConstructor
-public class LogTraceBasicHandler implements InvocationHandler {
+public class LogTraceFilterHandler implements InvocationHandler {
 
     private final Object target;
     private final LogTrace logTrace;
+    private final String[] patterns;
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+
+        //메서드 이름 필터
+        String methodNAme = method.getName();
+
+        //패턴과 매칭이 안되면
+        if (!PatternMatchUtils.simpleMatch(patterns, methodNAme)) {
+            return method.invoke(target, args);
+        }
+
         TraceStatus status = null;
         try {
             String msg = method.getDeclaringClass().getSimpleName() + "," + method.getName() + "()";
