@@ -1,6 +1,8 @@
 package hello.proxy.config.v3_proxyfactory;
 
-import hello.proxy.app.v1.*;
+import hello.proxy.app.v2.OrderControllerV2;
+import hello.proxy.app.v2.OrderRepositoryV2;
+import hello.proxy.app.v2.OrderServiceV2;
 import hello.proxy.config.v3_proxyfactory.advice.LogTracedAdvice;
 import hello.trace.trace.logtrace.LogTrace;
 import lombok.extern.slf4j.Slf4j;
@@ -13,32 +15,32 @@ import org.springframework.context.annotation.Configuration;
 
 @Slf4j
 @Configuration
-public class ProxyFactoryConfigV1 {
+public class ProxyFactoryConfigV2 {
 
     @Bean
-    public OrderControllerV1 orderControllerV1(LogTrace logTrace) {
-        ProxyFactory proxyFactory = new ProxyFactory(new OrderControllerV1Impl(orderServiceV1(logTrace)));
+    public OrderControllerV2 orderControllerV2(LogTrace logTrace) {
+        ProxyFactory proxyFactory = new ProxyFactory(new OrderControllerV2(orderServiceV2(logTrace)));
         proxyFactory.addAdvisor(getAdvisor(logTrace));
-        OrderControllerV1 proxy = (OrderControllerV1) proxyFactory.getProxy();
-        log.info("proxyFactory OrderControllerV1 proxy={}", proxy);
+        OrderControllerV2 proxy = (OrderControllerV2) proxyFactory.getProxy();
+        log.info("proxyFactory OrderControllerV2 proxy={}", proxy.getClass());
         return proxy;
     }
 
     @Bean
-    public OrderServiceV1 orderServiceV1(LogTrace logTrace) {
-        ProxyFactory proxyFactory = new ProxyFactory(new OrderServiceV1Impl(orderRepositoryV1(logTrace)));
+    public OrderServiceV2 orderServiceV2(LogTrace logTrace) {
+        ProxyFactory proxyFactory = new ProxyFactory(new OrderServiceV2(orderRepositoryV2(logTrace)));
         proxyFactory.addAdvisor(getAdvisor(logTrace));
-        OrderServiceV1 proxy = (OrderServiceV1) proxyFactory.getProxy();
-        log.info("proxyFactory OrderServiceV1 proxy={}", proxy);
+        OrderServiceV2 proxy = (OrderServiceV2) proxyFactory.getProxy();
+        log.info("proxyFactory OrderServiceV2 proxy={}", proxy.getClass());
         return proxy;
     }
 
     @Bean
-    public OrderRepositoryV1 orderRepositoryV1(LogTrace logTrace) {
-        ProxyFactory proxyFactory = new ProxyFactory(new OrderRepositoryV1Impl());
+    public OrderRepositoryV2 orderRepositoryV2(LogTrace logTrace) {
+        ProxyFactory proxyFactory = new ProxyFactory(new OrderRepositoryV2());
         proxyFactory.addAdvisor(getAdvisor(logTrace));
-        OrderRepositoryV1 proxy = (OrderRepositoryV1) proxyFactory.getProxy();
-        log.info("proxyFactory orderRepositoryV1 proxy={}", proxy);
+        OrderRepositoryV2 proxy = (OrderRepositoryV2) proxyFactory.getProxy();
+        log.info("proxyFactory orderRepositoryV2 proxy={}", proxy.getClass());
         return proxy;
     }
 
