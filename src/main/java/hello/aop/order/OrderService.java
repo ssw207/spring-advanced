@@ -1,6 +1,5 @@
 package hello.aop.order;
 
-import hello.proxy.app.v3.OrderRepositoryV3;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -8,7 +7,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class OrderService {
 
-    private final OrderRepositoryV3 orderRepository;
+    private final OrderRepository orderRepository;
 
     public void orderItem(String itemId) {
         orderRepository.save(itemId);
