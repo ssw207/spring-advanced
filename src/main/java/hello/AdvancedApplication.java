@@ -1,6 +1,6 @@
 package hello;
 
-import hello.aop.order.aop.AspectV3;
+import hello.aop.order.aop.AspectV4Pointcut;
 import hello.trace.trace.logtrace.LogTrace;
 import hello.trace.trace.logtrace.ThreadLocalLogTrace;
 import org.springframework.boot.SpringApplication;
@@ -23,7 +23,8 @@ import org.springframework.context.annotation.Import;
 
 //@Import(AspectV1.class) // bean으로 등록됨
 //@Import(AspectV2.class) // bean으로 등록됨
-@Import(AspectV3.class)
+//@Import(AspectV3.class)
+@Import(AspectV4Pointcut.class)
 @SpringBootApplication(scanBasePackages = "hello.aop.order") // SpringBootApplication 컴포넌트 스캔의 기본위치는 현재 클래스 기준으로 스캔한다.
 public class AdvancedApplication {
 
