@@ -8,6 +8,7 @@ import org.aspectj.lang.annotation.Aspect;
 @Slf4j
 @Aspect
 public class AspectV4Pointcut {
+
     @Around("hello.aop.order.aop.Pointcuts.allOrder()") // 포인트컷(적용되는 위치), 프록시 메서드만 적용됨
     public Object doLog(ProceedingJoinPoint joinPoint) throws Throwable { // advice(적용로직)
         log.info("[log] {}", joinPoint.getSignature()); // join poin 시그니처
