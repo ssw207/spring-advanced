@@ -25,7 +25,7 @@ import org.springframework.context.annotation.Bean;
 //@Import(AspectV4Pointcut.class)
 //@Import({AspectV5Order.LogAspect.class, AspectV5Order.TxAspect.class})
 //@Import(AspectV6Advice.class)
-@SpringBootApplication(scanBasePackages = {"hello.aop.order", "hello.aop.member", "hello.aop.exam"}) // SpringBootApplication 컴포넌트 스캔의 기본위치는 현재 클래스 기준으로 스캔한다.
+@SpringBootApplication(scanBasePackages = {"hello.aop"}) // SpringBootApplication 컴포넌트 스캔의 기본위치는 현재 클래스 기준으로 스캔한다.
 public class AdvancedApplication {
 
 	public static void main(String[] args) {
