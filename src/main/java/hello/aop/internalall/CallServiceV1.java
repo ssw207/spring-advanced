@@ -1,25 +1,22 @@
 package hello.aop.internalall;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
+@RequiredArgsConstructor
 public class CallServiceV1 {
 
-    private CallServiceV1 callServiceV1;
-
-    /**
-     * 생성된 의존성을 setter로 주입한다.
-     * 스프링은 생성자로 객체를 생성 -> 주입하는 단계로 나뉘어 지는데
-     * 생성자를 통해 자기자신을 주입받게하면 생성되지도 않은 자기자신을 참조하므로 순환참조 문제가 발생한다
-     * setter로 주입받는경우 이미 생성된 자기자신을 주입받기 떄문에 순환참조가 발생하지 않는다.
-     */
-
+    //private final ApplicationContext context;
+    private final ObjectProvider<CallServiceV1> callServiceProvider;
 
     public void external() {
         log.info("call external");
-        internal(); // 내부 메서드 호출
+        CallServiceV1 callServiceV1 = callServiceProvider.getObject(); // 실제 객체를 사용하는 시점에서 빈을 조회한다
+        callServiceV1.internal(); // 내부 메서드 호출
     }
 
     public void internal() {
