@@ -1,6 +1,6 @@
-package hello.aop.internalall;
+package hello.aop.internalcall;
 
-import hello.aop.internalall.aop.CallLogAspect;
+import hello.aop.internalcall.aop.CallLogAspect;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
